@@ -11,4 +11,7 @@ GameManager.prototype.InitPlayer = function(name,spriteset) {
 	BindKey(this.GameSetting.KeyRight,"KeyPressed(gameManager.GameSetting.KeyRight)","KeyReleased(gameManager.GameSetting.KeyRight)");
 	BindKey(this.GameSetting.KeySwitch,"gameManager.Player.ToggleShoes()","");
 	BindKey(this.GameSetting.KeyA,"gameManager.Player.Interact()","");
+	
+	// Toggle debug window
+	BindKey(KEY_TILDE,"windowManager.DebugWindowVisible = !windowManager.DebugWindowVisible","");
 }

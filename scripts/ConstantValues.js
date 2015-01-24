@@ -17,4 +17,9 @@ var ACTION = {
 	WALK : "Walk",
 	RUN : "Run",
 	RIDE : "Ride"
-}
+};
+var COLOR = {
+	WHITE : CreateColor(255,255,255,255),
+	BLACK : CreateColor(0,0,0,255),
+	RED : CreateColor(255,0,0,255)
+};
