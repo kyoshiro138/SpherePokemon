@@ -23,3 +23,8 @@ var COLOR = {
 	BLACK : CreateColor(0,0,0,255),
 	RED : CreateColor(255,0,0,255)
 };
+var ENTITY = {
+	NONE : 0,
+	PERSON : 1,
+	TRIGGER : 2
+};

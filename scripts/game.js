@@ -1,4 +1,5 @@
 RequireScript("Functions.js");
+RequireScript("SupportFunctions.js");
 RequireScript("Player.js");
 RequireScript("ConstantValues.js");
 RequireScript("Character.js");
@@ -26,13 +27,12 @@ function game() {
 }
 
 function UpdateScripts() {
+	DetectEntity();
 	gameManager.Player.UpdateAction();
 }
 function RenderScripts() {
 	var str = gameManager.Player.ToString();
 	Debug(str);
 	
-	if(gameManager.Player.CanInteract) {
-			ExecuteTriggerAt(gameManager.Player.Name,gameManager.Player.ActionManager.Direction);
-	}
+	gameManager.Player.ActionManager.UpdateInteraction();
 }

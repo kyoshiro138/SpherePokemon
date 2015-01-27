@@ -14,17 +14,15 @@ function WindowManager(playerName) {
 }
 
 WindowManager.prototype.ShowSign = function(signPosX,signPosY,text) {
-	if(gameManager.Player.ActionManager.Direction == DIRECTION.NORTH) {
-		var width = this.Font.getStringWidth(text);
-		var x = MapToScreenX(GetPersonLayer(this.PlayerName),signPosX*TILE_SIZE.WIDTH);
-		var y = MapToScreenY(GetPersonLayer(this.PlayerName),(signPosY-2)*TILE_SIZE.HEIGHT);
-		var windowX = x + (TILE_SIZE.WIDTH/2) - (width/2);
-		
-		this.WindowStyle.drawWindow(windowX,y,width,TILE_SIZE.HEIGHT);
-		this.Image.blit(x,y+TILE_SIZE.HEIGHT);
+	var width = this.Font.getStringWidth(text);
+	var x = MapToScreenX(GetPersonLayer(this.PlayerName),signPosX*TILE_SIZE.WIDTH);
+	var y = MapToScreenY(GetPersonLayer(this.PlayerName),(signPosY-2)*TILE_SIZE.HEIGHT);
+	var windowX = x + (TILE_SIZE.WIDTH/2) - (width/2);
+	
+	this.WindowStyle.drawWindow(windowX,y,width,TILE_SIZE.HEIGHT);
+	this.Image.blit(x,y+TILE_SIZE.HEIGHT);
 
-		this.Font.drawTextBox(windowX, y, width, TILE_SIZE.HEIGHT, 0, text);
-	}
+	this.Font.drawTextBox(windowX, y, width, TILE_SIZE.HEIGHT, 0, text);
 }
 
 WindowManager.prototype.ShowDebug = function(text) {
