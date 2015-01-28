@@ -50,3 +50,18 @@ function TriggerCloseDoor() {
 		gameManager.Player.ActionManager.CloseDoor();
 	}
 }
+
+function TriggerChangeMap(map,posTileX,posTileY,posLayer) {
+	var name = gameManager.Player.Name;
+	var direction = gameManager.Player.ActionManager.Direction;
+	
+	var tileX = gameManager.Player.ActionManager.InteractingEntityTileX;
+	var tileY = gameManager.Player.ActionManager.InteractingEntityTileY;
+	
+	if(IsPositionInsideTile(GetPersonX(name),GetPersonY(name),tileX,tileY)) {
+		if(gameManager.Player.ActionManager.HaveOpenedDoor()) {
+			gameManager.Player.ActionManager.CloseDoor();
+		}
+		mapManager.ChangeMap(map,posTileY,posTileY,posLayer);
+	}
+}

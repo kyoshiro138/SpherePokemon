@@ -10,7 +10,7 @@ function WindowManager(playerName) {
 	this.Font = LoadFont("pokemon_font.rfn");
 	this.Font.setColorMask(COLOR.BLACK);
 	
-	this.DebugWindowVisible = false;
+	this.DebugWindowVisible = true;
 }
 
 WindowManager.prototype.ShowSign = function(signPosX,signPosY,text) {

@@ -13,7 +13,8 @@ Player.prototype.ToString = function() {
 	var str = "Player: [Name:" + this.Name + "]";
 	str += " [Direction:" + this.ActionManager.Direction + "]";
 	str += " [X:" + GetPersonX(this.Name) + "]";
-	str += " [Y:" + GetPersonY(this.Name) + "]\n";
+	str += " [Y:" + GetPersonY(this.Name) + "]";
+	str += " [Layer:" + GetPersonLayer(this.Name) + "]\n";
 	str += this.ActionManager.ToString();
 	
 	return str;

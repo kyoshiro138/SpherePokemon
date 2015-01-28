@@ -8,15 +8,14 @@ MapManager.prototype.StartMapEngine = function(map) {
 	MapEngine(map,this.FrameRate);
 }
 
-MapManager.prototype.ChangeMap = function(map,fromTileX,fromTileY,toTileX,toTileY,layer) {
-	if(IsPositionInsideTile(GetPersonX(this.Name),GetPersonY(this.Name),fromTileX,fromTileY))
-	{
+MapManager.prototype.ChangeMap = function(map,tileX,tileY,layer) {
 		ChangeMap(map);
 		FlipScreen();
-		//Abort(toTileX+ " " +toTileY);
-		var x = GetCenterXPositionOfTile(toTileX,toTileY);
-		var y = GetCenterYPositionOfTile(toTileX,toTileY);
-		//Abort(x+ " " +y);
-		gameManager.Player.ChangeMap(x,y,layer);
-	}
+		
+		var x = GetCenterXPositionOfTile(tileX,tileY);
+		var y = GetCenterYPositionOfTile(tileX,tileY);
+		
+		SetPersonX(this.Name,x);
+		SetPersonY(this.Name,y);
+		SetPersonLayer(this.Name,layer);
 }
