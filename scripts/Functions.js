@@ -51,17 +51,32 @@ function TriggerCloseDoor() {
 	}
 }
 
-function TriggerChangeMap(map,posTileX,posTileY,posLayer) {
+function TriggerLeaveMap(map,posTileX,posTileY,posLayer) {
 	var name = gameManager.Player.Name;
-	var direction = gameManager.Player.ActionManager.Direction;
-	
 	var tileX = gameManager.Player.ActionManager.InteractingEntityTileX;
 	var tileY = gameManager.Player.ActionManager.InteractingEntityTileY;
 	
 	if(IsPositionInsideTile(GetPersonX(name),GetPersonY(name),tileX,tileY)) {
-		if(gameManager.Player.ActionManager.HaveOpenedDoor()) {
-			gameManager.Player.ActionManager.CloseDoor();
+		gameManager.Player.ActionManager.ActionEnabled = false;
+		mapManager.FadeIn();
+		
+		if(mapManager.WillLeaveMap) {
+			if(gameManager.Player.ActionManager.HaveOpenedDoor()) {
+				gameManager.Player.ActionManager.CloseDoor();
+			}
+			
+			gameManager.Player.ActionManager.Stand();
+			mapManager.ChangeMap(map,posTileX,posTileY,posLayer);
 		}
-		mapManager.ChangeMap(map,posTileY,posTileY,posLayer);
+	}
+}
+
+function TriggerEnterMap() {
+	if(mapManager.WillEnterMap) {
+		mapManager.FadeOut();
+		
+		if(!mapManager.WillEnterMap) {
+			gameManager.Player.ActionManager.ActionEnabled = true;
+		}
 	}
 }

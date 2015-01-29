@@ -3,6 +3,7 @@ function ActionManager(actor) {
 	this.Direction = DIRECTION.SOUTH;
 	this.SideDirection = DIRECTION.NONE;
 	this.Action = ACTION.WALK;
+	this.ActionEnabled = true;
 	this.IsMoving = false;
 	this.IsTalking = false;
 	this.Speed = 1;
@@ -19,10 +20,12 @@ function ActionManager(actor) {
 }
 
 ActionManager.prototype.ToString = function() {
-	var str = "Action: [Entity:"+this.InteractingEntity+"]";
+	var str = "Action: [Enaled:"+this.ActionEnabled+"]";
+	str += " [Entity:"+this.InteractingEntity+"]";
 	str += " [Person:"+this.InteractingPersonName+"]";
 	str += " [EntityX:"+this.InteractingEntityTileX+"]";
 	str += " [EntityY:"+this.InteractingEntityTileY+"]";
+	str += this.DoorTileId;
 	
 	return str;
 }
@@ -51,10 +54,12 @@ ActionManager.prototype.Move = function() {
 }
 
 ActionManager.prototype.UpdateMovement = function() {
-	if(this.IsMoving) {
-		this.Move();
-	} else {
-		this.Stand();
+	if(this.ActionEnabled) {
+		if(this.IsMoving) {	
+			this.Move();
+		} else {
+			this.Stand();
+		}
 	}
 }
 

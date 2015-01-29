@@ -21,7 +21,7 @@ function game() {
 	
 	SetUpdateScript('UpdateScripts()');
 	SetRenderScript('RenderScripts()');
-	
+
 	mapManager = new MapManager();
 	mapManager.StartMapEngine("PalletTown.rmp");
 }
@@ -35,4 +35,5 @@ function RenderScripts() {
 	Debug(str);
 	
 	gameManager.Player.ActionManager.UpdateInteraction();
+	mapManager.UpdateScripts();
 }
