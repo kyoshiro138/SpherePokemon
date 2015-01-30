@@ -43,14 +43,40 @@ ActionManager.prototype.Move = function() {
 	if(!IsObstructed(this.Actor,this.Direction)) {
 		command = GetMoveCommand(this.Direction);
 		QueuePersonCommand(this.Actor,command,true);
-	} else if(this.SideDirection == DIRECTION.NONE || IsObstructed(this.Actor,this.SideDirection)) {
-		this.Stand();
+	} else {
+		this.ApproachObstruction();
+		if(this.SideDirection == DIRECTION.NONE || IsObstructed(this.Actor,this.SideDirection)) {
+			this.Stand();
+		}
 	}
 	
 	if(this.SideDirection != DIRECTION.NONE && !IsObstructed(this.Actor,this.SideDirection)) {
 		command = GetMoveCommand(this.SideDirection);
 		QueuePersonCommand(this.Actor,command,true);
 	}
+}
+ActionManager.prototype.ApproachObstruction = function() {
+	var speed = this.Speed;
+	this.SetSpeed(1);
+	
+	while(!IsObstructed(this.Actor,this.Direction)) {
+		switch(this.Direction) {
+			case DIRECTION.NORTH:
+				SetPersonY(this.Actor,GetPersonY(this.Actor)-1);
+				break;
+			case DIRECTION.SOUTH:
+				SetPersonY(this.Actor,GetPersonY(this.Actor)+1);
+				break;
+			case DIRECTION.WEST:
+				SetPersonX(this.Actor,GetPersonX(this.Actor)-1);
+				break;
+			case DIRECTION.EAST:
+				SetPersonX(this.Actor,GetPersonX(this.Actor)+1);
+				break;
+		}
+	}
+	
+	this.SetSpeed(speed);
 }
 
 ActionManager.prototype.UpdateMovement = function() {
