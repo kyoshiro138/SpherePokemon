@@ -5,7 +5,7 @@ function WindowManager(playerName) {
 	this.DebugFont = LoadFont("pokemon_font.rfn");
 	this.DebugFont.setColorMask(COLOR.WHITE);
 	
-	this.WindowStyle = LoadWindowStyle("window1.rws");
+	this.WindowStyle = LoadWindowStyle("window_default.rws");
 	this.Image = LoadImage("window_arrow_down.png");
 	this.Font = LoadFont("pokemon_font.rfn");
 	this.Font.setColorMask(COLOR.BLACK);
