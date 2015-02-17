@@ -80,3 +80,21 @@ function TriggerEnterMap() {
 		}
 	}
 }
+
+function TriggerStartConversation(dialog) {
+	if(conversationManager.IsConversationEnabled() && gameManager.Player.ActionManager.ActionEnabled) {
+		gameManager.Player.ActionManager.ActionEnabled = false;
+		conversationManager.StartConversation(gameManager.Player.ActionManager.InteractingPersonName,dialog);
+	}
+}
+
+function TriggerUpdateConversation() {
+	if(conversationManager.IsWaitingForKey && IsKeyPressed(gameManager.GameSetting.KeyA)) {
+		conversationManager.UpdateConversation();
+	}
+}
+
+function TriggerEndConversation() {
+	gameManager.Player.ActionManager.ActionEnabled = true;
+	conversationManager.EndConversation();
+}

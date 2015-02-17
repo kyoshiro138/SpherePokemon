@@ -37,3 +37,21 @@ WindowManager.prototype.ShowDebug = function(text) {
 		this.DebugFont.drawTextBox(windowX, windowY, windowWidth, windowHeight, 0, text);
 	}
 }
+
+WindowManager.prototype.ShowDialog = function(speaker,text) {
+	var layer = GetPersonLayer(speaker);
+	var x = MapToScreenX(layer,GetPersonX(speaker));
+	var y = MapToScreenY(layer,GetPersonY(speaker));
+	
+	var windowWidth = 300;
+	var windowHeight = this.Font.getStringHeight(text,windowWidth);
+	var windowX = x - (windowWidth/2);
+	var windowY = y - (TILE_SIZE.HEIGHT * 2) - windowHeight;
+	this.WindowStyle.drawWindow(windowX,windowY,windowWidth,windowHeight);
+	
+	var imageX = x - (TILE_SIZE.WIDTH / 2);
+	var imageY = y - (TILE_SIZE.HEIGHT * 2);
+	this.Image.blit(imageX,imageY);
+
+	this.Font.drawTextBox(windowX, windowY, windowWidth, windowHeight, 0, text);
+}
