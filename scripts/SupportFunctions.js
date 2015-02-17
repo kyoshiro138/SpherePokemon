@@ -8,13 +8,17 @@ function IsPositionInsideTile(x,y,tileX,tileY) {
 }
 
 function KeyPressed(key) {
-	var direction = GetDirectionFromMovementKey(key);
-	
-	if(!gameManager.Player.ActionManager.IsMoving) {
-		gameManager.Player.ActionManager.IsMoving = true;
-		gameManager.Player.ActionManager.Direction = direction;
+	if(gameManager.Player.ActionManager.ActionEnabled) {
+		var direction = GetDirectionFromMovementKey(key);
+		
+		if(!gameManager.Player.ActionManager.IsMoving) {
+			gameManager.Player.ActionManager.IsMoving = true;
+			gameManager.Player.ActionManager.Direction = direction;
+		} else {
+			gameManager.Player.ActionManager.SideDirection = direction;
+		}
 	} else {
-		gameManager.Player.ActionManager.SideDirection = direction;
+		gameManager.Player.ActionManager.Stand();
 	}
 }
 
