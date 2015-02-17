@@ -11,6 +11,7 @@ Completed function:
 - Change map with fading animation
 - Open/Close door
 - Map: Pallet Town (not people yet)
+- Talk with NPCs
 
 Needed function:
 - Map:
@@ -24,7 +25,6 @@ Needed function:
   + Bag
   + Pokemon
   + Option
-- Talk with NPCs
 - Letter by letter talking
 - Bicycle enable
 - Pick up item
@@ -71,3 +71,6 @@ Needed function:
 
 30/01/2015:
  - Start writing README
+
+17/02/2012:
+ - Add conversation manager
