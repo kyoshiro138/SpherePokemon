@@ -25,7 +25,6 @@ ActionManager.prototype.ToString = function() {
 	str += " [Person:"+this.InteractingPersonName+"]";
 	str += " [EntityX:"+this.InteractingEntityTileX+"]";
 	str += " [EntityY:"+this.InteractingEntityTileY+"]";
-	str += this.DoorTileId;
 	
 	return str;
 }

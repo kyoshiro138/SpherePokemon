@@ -54,6 +54,16 @@ function GetDirectionFromMovementKey(key) {
 	}
 }
 
+function GetPlayerOppositeDirection() {
+	var direction = gameManager.Player.ActionManager.Direction;
+	switch(direction) {
+		case DIRECTION.NORTH: return DIRECTION.SOUTH;
+		case DIRECTION.SOUTH: return DIRECTION.NORTH;
+		case DIRECTION.WEST: return DIRECTION.EAST;
+		case DIRECTION.EAST: return DIRECTION.WEST;
+	}
+}
+
 function GetMoveCommand(direction) {
 	switch(direction) {
 		case DIRECTION.NORTH:

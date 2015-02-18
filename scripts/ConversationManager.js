@@ -30,6 +30,9 @@ ConversationManager.prototype.StartConversation = function(npc,dialog) {
 	this.Dialog = dialog;
 	this.SentenceId = GetSentenceIdByDialog(dialog);
 	this.ConversationStarted = true;
+	
+	var direction = "Face"+GetPlayerOppositeDirection();
+	SetPersonDirection(this.NPC,direction);
 }
 
 ConversationManager.prototype.EndConversation = function() {
